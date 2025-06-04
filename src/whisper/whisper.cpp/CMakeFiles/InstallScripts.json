@@ -1,0 +1,18 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/ggml/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/ggml/src/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/ggml/src/ggml-cpu/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/src/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/tests/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/examples/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/examples/cli/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/examples/bench/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/examples/server/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/examples/quantize/cmake_install.cmake",
+		"D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/examples/deprecation-warning/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

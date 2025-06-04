@@ -1,0 +1,1 @@
+D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/src/whisper.dir/MinSizeRel/whisper.obj

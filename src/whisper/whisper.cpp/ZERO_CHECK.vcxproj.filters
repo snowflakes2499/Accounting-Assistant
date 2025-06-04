@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\CMakeFiles\c3e33027381c5614b6aa8e5b33dd4364\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{7395B5A9-96D5-3200-B0F2-47A18D5EE695}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

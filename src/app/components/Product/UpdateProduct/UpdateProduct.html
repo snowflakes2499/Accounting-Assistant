@@ -1,0 +1,25 @@
+<h2>Edit Products</h2>
+
+<form #productForm="ngForm">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Tax</th>
+      <th>Actions</th>
+    </tr>
+
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td><input [(ngModel)]="product.productName" name="name{{product.id}}" /></td>
+      <td><input type="number" [(ngModel)]="product.productPrice" name="price{{product.id}}" /></td>
+      <td><input type="number" [(ngModel)]="product.productQuantity" name="qty{{product.id}}" /></td>
+      <td><input type="number" [(ngModel)]="product.productTax" name="tax{{product.id}}" /></td>
+      <td>
+        <button type="button" (click)="updateProduct(product)">💾 Save</button>
+      </td>
+    </tr>
+  </table>
+</form>

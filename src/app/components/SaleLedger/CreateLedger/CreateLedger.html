@@ -1,0 +1,54 @@
+<h2>Create Ledger</h2>
+
+<form (ngSubmit)="createLedger()" #ledgerForm="ngForm">
+  <label for="ledgerName">Ledger Name:</label>
+  <input
+    type="text"
+    id="ledgerName"
+    name="ledgerName"
+    [(ngModel)]="ledger.ledgerName"
+    required
+  /><br /><br />
+
+  <label for="ledgerType">Ledger Type:</label>
+  <select
+    id="ledgerType"
+    name="ledgerType"
+    [(ngModel)]="ledger.ledgerType"
+    required
+  >
+    <option value="" disabled selected>Select type</option>
+    <option value="Asset">Asset</option>
+    <option value="Liability">Liability</option>
+    <option value="Income">Income</option>
+    <option value="Expense">Expense</option>
+    <option value="Equity">Equity</option>
+  </select><br /><br />
+
+  <label for="openingBalance">Opening Balance:</label>
+  <input
+    type="number"
+    id="openingBalance"
+    name="openingBalance"
+    [(ngModel)]="ledger.openingBalance"
+    required
+  /><br /><br />
+
+  <label for="currency">Currency:</label>
+  <input
+    type="text"
+    id="currency"
+    name="currency"
+    [(ngModel)]="ledger.currency"
+    required
+  /><br /><br />
+
+  <label for="description">Description:</label>
+  <textarea
+    id="description"
+    name="description"
+    [(ngModel)]="ledger.description"
+  ></textarea><br /><br />
+
+  <button type="submit">Create Ledger</button>
+</form>

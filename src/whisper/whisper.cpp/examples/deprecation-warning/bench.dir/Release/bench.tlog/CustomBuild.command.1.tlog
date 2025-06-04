@@ -1,0 +1,10 @@
+^D:\ANGSSS\AI-ACCOUNTING-ASSISTANT\SRC\WHISPER\WHISPER.CPP\EXAMPLES\DEPRECATION-WARNING\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp -BD:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp --check-stamp-file D:/Angsss/ai-accounting-assistant/src/whisper/whisper.cpp/examples/deprecation-warning/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

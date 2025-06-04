@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\examples\deprecation-warning\deprecation-warning.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\examples\deprecation-warning\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1D80AE1C-A51C-3EE1-8C0F-6EA74A9A031B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

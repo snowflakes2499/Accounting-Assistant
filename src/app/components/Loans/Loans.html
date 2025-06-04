@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Loan History</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fc;
+      color: #333;
+      padding: 24px;
+    }
+    
+    .loans-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 32px;
+    }
+    
+    .loans-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1e293b;
+      letter-spacing: -0.5px;
+    }
+    
+    .loading-container, .error-container, .empty-state {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 0;
+      background-color: #fafbff;
+      border-radius: 12px;
+      color: #64748b;
+    }
+    
+    .loading-container {
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    
+    .error-container {
+      color: #ef4444;
+      background-color: #fff5f5;
+    }
+    
+    .empty-state {
+      color: #64748b;
+      font-size: 15px;
+      padding: 80px 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 8px;
+    }
+    
+    th {
+      font-weight: 500;
+      color: #64748b;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    
+    td {
+      padding: 16px;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+    
+    tr:hover td {
+      background-color: #f8faff;
+    }
+    
+    .amount {
+      font-weight: 600;
+      color: #0f172a;
+    }
+    
+    .description {
+      color: #64748b;
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .person-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      color: #64748b;
+      font-size: 14px;
+    }
+    
+    .loan-type {
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-block;
+    }
+    
+    .loan-given {
+      background-color: #ecfdf5;
+      color: #059669;
+    }
+    
+    .loan-received {
+      background-color: #eff6ff;
+      color: #3b82f6;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+    
+    @media (max-width: 768px) {
+      .loans-container {
+        padding: 20px;
+        border-radius: 12px;
+      }
+      
+      th:nth-child(1), td:nth-child(1) {
+        display: none;
+      }
+      
+      th, td {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loans-container">
+    <div class="loans-header">
+      <h2>Loan History</h2>
+      <div class="filter-section">
+        <!-- Filter controls could go here -->
+      </div>
+    </div>
+    
+    <!-- Loading state -->
+    <div class="loading-container" *ngIf="isLoading">
+      <div>Loading loan transactions...</div>
+    </div>
+    
+    <!-- Error state -->
+    <div class="error-container" *ngIf="error">
+      {{ error }}
+    </div>
+    
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="!isLoading && transactions.length === 0">
+      <div>No loan transactions found.</div>
+    </div>
+    
+    <!-- Data table -->
+    <table *ngIf="transactions.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Person</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tx of transactions">
+          <td>{{ tx.id }}</td>
+          <td>
+            <div class="person-cell">
+              <div class="avatar">{{ tx.personName.charAt(0) }}</div>
+              <div>{{ tx.personName }}</div>
+            </div>
+          </td>
+          <td>
+            <span class="loan-type" [ngClass]="tx.loanType === 'Given' ? 'loan-given' : 'loan-received'">
+              {{ tx.loanType }}
+            </span>
+          </td>
+          <td class="amount">{{ tx.loanAmount | currency:'INR':'symbol-narrow' }}</td>
+          <td class="description">{{ tx.description || '—' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

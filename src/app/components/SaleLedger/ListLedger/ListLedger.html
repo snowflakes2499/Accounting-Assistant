@@ -1,0 +1,440 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Management Dashboard</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --secondary: #64748b;
+      --danger: #ef4444;
+      --danger-hover: #dc2626;
+      --success: #10b981;
+      --success-hover: #059669;
+      --warning: #f59e0b;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius-sm: 0.125rem;
+      --radius: 0.25rem;
+      --radius-md: 0.375rem;
+      --radius-lg: 0.5rem;
+      --radius-xl: 0.75rem;
+      --radius-2xl: 1rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    
+    body {
+      background-color: #f8fafc;
+      color: var(--gray-800);
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    @media (max-width: 768px) {
+  .ledger-table thead {
+    display: none;
+  }
+
+  .ledger-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 1rem;
+    background-color: white;
+  }
+
+  .ledger-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .ledger-table td:last-child {
+    border-bottom: none;
+  }
+
+  .ledger-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--gray-500);
+  }
+}
+
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    
+    /* Sidebar Styles */
+    .sidebar {
+      width: 280px;
+      background-color: white;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      border-right: 1px solid var(--gray-200);
+    }
+    
+    .sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .brand-icon {
+      background-color: var(--primary);
+      color: white;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 600;
+    }
+    
+    .sidebar-nav {
+      padding: 1.5rem 1rem;
+      flex-grow: 1;
+    }
+    
+    .nav-button {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-md);
+      color: var(--gray-600);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 0.5rem;
+      gap: 0.75rem;
+    }
+    
+    .nav-button:hover {
+      background-color: var(--gray-100);
+      color: var(--gray-900);
+    }
+    
+    .nav-button.active {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+    
+    .nav-button svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .sidebar-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    
+    /* Main Content Styles */
+    .main-content {
+      flex-grow: 1;
+      padding: 2rem;
+      overflow-y: auto;
+      background-color: var(--gray-50);
+    }
+    
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Table Styles */
+    .table-container {
+      overflow-x: auto;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.875rem;
+    }
+    
+    th {
+      font-weight: 500;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-200);
+      background-color: var(--gray-50);
+      position: sticky;
+      top: 0;
+    }
+    
+    th:first-child {
+      border-top-left-radius: var(--radius);
+    }
+    
+    th:last-child {
+      border-top-right-radius: var(--radius);
+    }
+    
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--gray-200);
+      vertical-align: middle;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover td {
+      background-color: var(--gray-50);
+    }
+    
+    /* Form Styles */
+    form {
+      width: 100%;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      margin-bottom: 0.5rem;
+    }
+    
+    .input-field {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background-color: white;
+    }
+    
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+    
+    .btn {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+    
+    .btn-danger {
+      background-color: var(--danger);
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background-color: var(--danger-hover);
+    }
+    
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+    }
+    
+    .btn-success:hover {
+      background-color: var(--success-hover);
+    }
+    
+    .btn-icon {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      padding: 0;
+    }
+    
+    .btn-icon-danger {
+      color: var(--danger);
+      background-color: rgba(239, 68, 68, 0.1);
+    }
+    
+    .btn-icon-danger:hover {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+    
+    .btn-icon-primary {
+      color: var(--primary);
+      background-color: rgba(79, 70, 229, 0.1);
+    }
+    
+    .btn-icon-primary:hover {
+      background-color: rgba(79, 70, 229, 0.2);
+    }
+    
+    .btn-icon-success {
+      color: var(--success);
+      background-color: rgba(16, 185, 129, 0.1);
+    }
+    
+    .btn-icon-success:hover {
+      background-color: rgba(16, 185, 129, 0.2);
+    }
+    
+    .btn[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .table-input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+    }
+    
+    .action-cell {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    /* Create Product Form */
+    .create-product-form {
+      max-width: 600px;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    /* Badge */
+    .badge {
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .badge-success {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+    }
+    
+    .badge-warning {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+
+    
+  </style>
+</head>
+
+<section class="content-container">
+  <div class="card">
+    <header class="card-header">
+      <h2>All Ledgers</h2>
+    </header>
+    <div class="table-container">
+      <table class="ledger-table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Selling Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Amount</th>
+            <th scope="col">Tax</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ledger of ledgers">
+            <td data-label="ID">{{ ledger.id }}</td>
+            <td data-label="Product">{{ ledger.productName }}</td>
+            <td data-label="Price">{{ ledger.soldProductActualPrice }}</td>
+            <td data-label="Selling Price">{{ ledger.soldProductSellingPrice }}</td>
+            <td data-label="Quantity">{{ ledger.soldProductQuantity }}</td>
+            <td data-label="Total Amount">{{ ledger.soldAmount }}</td>
+            <td data-label="Tax">{{ ledger.productTax }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

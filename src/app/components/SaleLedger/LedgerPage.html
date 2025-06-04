@@ -1,0 +1,21 @@
+<div style="display: flex; height: 100vh;">
+  <!-- Sidebar -->
+  <!-- <div style="width: 250px; background-color: #f0f0f0; padding: 20px;">
+    <button (click)="selectedComponent = 'list'" style="display: block; width: 100%; margin-bottom: 10px;">List Ledgers</button>    
+    <br>
+    <button (click)="selectedComponent = 'create'" style="display: block; width: 100%;">Create Ledgers</button>
+    <br>
+    <button (click)="selectedComponent = 'delete'" style="display: block; width: 100%;">Delete Ledgers</button>
+    <br>
+    <button (click)="selectedComponent = 'update'" style="display: block; width: 100%;">Update Ledgers</button>
+
+  </div> -->
+
+  <!-- Main Content -->
+  <div style="flex-grow: 1; padding: 20px;">
+    <list-ledger-component *ngIf="selectedComponent === 'list'"></list-ledger-component>
+    <create-ledger-component *ngIf="selectedComponent === 'create'" (formSubmitted)="selectedComponent = 'list'"></create-ledger-component>
+    <delete-ledger-component *ngIf="selectedComponent === 'delete'"></delete-ledger-component>
+    <update-ledger-component *ngIf="selectedComponent === 'update'"></update-ledger-component>
+  </div>
+</div>

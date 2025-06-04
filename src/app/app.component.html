@@ -1,0 +1,31 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a class="logo" routerLink="/home">🚀 Assistant</a>
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active">🏠 Home</a></li>
+      <li><a routerLink="/expense" routerLinkActive="active">💰 Expenses</a></li>
+      <li><a routerLink="/loans" routerLinkActive="active">💰 Loans</a></li>
+      <li><a routerLink="/product" routerLinkActive="active">🛍️ Product</a></li>
+      <li><a routerLink="/ledger" routerLinkActive="active">🏷️ Sale Ledger</a></li>
+    </ul>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+
+<!-- Main content area -->
+<div class="router-outlet-container">
+  <router-outlet></router-outlet>
+  <div class="page-transition-overlay" id="pageTransition">
+    <div class="spinner"></div>
+  </div>
+</div>
+
+<voice-button-component></voice-button-component>
+
+
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+  }
+</script>

@@ -1,0 +1,50 @@
+<div class="voice-recorder-container">
+
+  <!-- Language toggle -->
+  <div class="language-toggle">
+    <button (click)="toggleLanguage('en')" [class.active]="selectedLanguage === 'en'">English</button>
+    <button (click)="toggleLanguage('hi')" [class.active]="selectedLanguage === 'hi'">हिन्दी</button>
+  </div>
+
+  <!-- Status or processing message -->
+  <div *ngIf="showStatus">
+    <div *ngIf="isProcessing" class="spinner"></div>
+  </div>
+
+  <!-- Transcription display -->
+  <div class="transcription-box" *ngIf="transcript">
+    {{ transcript }}
+  </div>
+
+  <!-- Audio visualization -->
+  <div class="audio-visualization" [ngClass]="{'recording': isRecording}">
+    <div class="audio-bar"></div>
+    <div class="audio-bar"></div>
+    <div class="audio-bar"></div>
+    <div class="audio-bar"></div>
+    <div class="audio-bar"></div>
+    <div class="audio-bar"></div>
+    <div class="audio-bar"></div>
+  </div>
+  
+  <!-- Controls container: Undo button + Voice record button -->
+  <div class="controls-container" style="display: flex; align-items: center; gap: 10px;">
+    <!-- Undo button on the left -->
+    <button class="undo-button" (click)="undoAction()" aria-label="Undo last action" title="Undo last action">
+      <!-- Simple undo icon (left arrow) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rotate-ccw"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-7.36L1 10"/></svg>
+    </button>
+
+    <!-- Main recording button -->
+    <button class="voice-button" [ngClass]="{'recording': isRecording}" 
+            (click)="toggleRecording()" aria-label="Record voice command">
+      <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Status text indicator -->
+  <div class="status-indicator" [ngClass]="{'active': showStatus}">{{ statusText }}</div>
+</div>

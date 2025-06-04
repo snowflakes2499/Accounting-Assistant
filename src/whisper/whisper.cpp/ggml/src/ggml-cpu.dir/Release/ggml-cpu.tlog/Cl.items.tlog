@@ -1,0 +1,10 @@
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\ggml-cpu.c;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\ggml-cpu\ggml-cpu.c.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\ggml-cpu.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\ggml-cpu\ggml-cpu.cpp.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\ggml-cpu-aarch64.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\ggml-cpu-aarch64.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\ggml-cpu-hbm.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\ggml-cpu-hbm.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\ggml-cpu-quants.c;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\ggml-cpu-quants.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\ggml-cpu-traits.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\ggml-cpu-traits.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\amx\amx.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\amx.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\amx\mmq.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\mmq.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\binary-ops.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\binary-ops.obj
+D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu\unary-ops.cpp;D:\Angsss\ai-accounting-assistant\src\whisper\whisper.cpp\ggml\src\ggml-cpu.dir\Release\unary-ops.obj

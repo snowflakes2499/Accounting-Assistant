@@ -1,0 +1,19 @@
+<h2>Products</h2>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Tax</td>
+    </tr>
+    <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.productPrice }}</td>
+        <td>{{ product.productQuantity }}</td>
+        <td>{{ product.productTax }}</td>
+        <td><button disabled>🗑️</button></td>
+        <td><button disabled>✏️</button></td>
+    </tr>
+</table>
